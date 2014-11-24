@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E21465F61A1B816C00920AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21465F51A1B816C00920AF4 /* AppDelegate.swift */; };
-		E21465F81A1B816C00920AF4 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21465F71A1B816C00920AF4 /* RootViewController.swift */; };
-		E21465FA1A1B816C00920AF4 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21465F91A1B816C00920AF4 /* DataViewController.swift */; };
-		E21465FC1A1B816C00920AF4 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21465FB1A1B816C00920AF4 /* ModelController.swift */; };
 		E21465FF1A1B816C00920AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21465FD1A1B816C00920AF4 /* Main.storyboard */; };
 		E21466011A1B816C00920AF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21466001A1B816C00920AF4 /* Images.xcassets */; };
-		E21466041A1B816C00920AF4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E21466021A1B816C00920AF4 /* LaunchScreen.xib */; };
 		E21466101A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214660F1A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift */; };
+		E2B0B1FC1A23995100E67CA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */; };
+		E2B0B1FE1A23996D00E67CA7 /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0B1FD1A23996D00E67CA7 /* CreateUserController.swift */; };
+		E2FE38841A23AA2F00ABBCAC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2FE38831A23AA2F00ABBCAC /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,15 +30,14 @@
 		E21465F01A1B816C00920AF4 /* Jeder Rappen Zaehlt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jeder Rappen Zaehlt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E21465F41A1B816C00920AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E21465F51A1B816C00920AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E21465F71A1B816C00920AF4 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		E21465F91A1B816C00920AF4 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		E21465FB1A1B816C00920AF4 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		E21465FE1A1B816C00920AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E21466001A1B816C00920AF4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E21466031A1B816C00920AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E21466091A1B816C00920AF4 /* Jeder Rappen ZaehltTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jeder Rappen ZaehltTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E214660E1A1B816C00920AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E214660F1A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jeder_Rappen_ZaehltTests.swift; sourceTree = "<group>"; };
+		E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		E2B0B1FD1A23996D00E67CA7 /* CreateUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUserController.swift; path = ../CreateUserController.swift; sourceTree = "<group>"; };
+		E2FE38831A23AA2F00ABBCAC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +79,13 @@
 		E21465F21A1B816C00920AF4 /* Jeder Rappen Zaehlt */ = {
 			isa = PBXGroup;
 			children = (
+				E2B0B1FD1A23996D00E67CA7 /* CreateUserController.swift */,
 				E21465F51A1B816C00920AF4 /* AppDelegate.swift */,
-				E21465F71A1B816C00920AF4 /* RootViewController.swift */,
-				E21465F91A1B816C00920AF4 /* DataViewController.swift */,
-				E21465FB1A1B816C00920AF4 /* ModelController.swift */,
-				E21465FD1A1B816C00920AF4 /* Main.storyboard */,
 				E21466001A1B816C00920AF4 /* Images.xcassets */,
-				E21466021A1B816C00920AF4 /* LaunchScreen.xib */,
+				E21465FD1A1B816C00920AF4 /* Main.storyboard */,
+				E2FE38831A23AA2F00ABBCAC /* LaunchScreen.xib */,
 				E21465F31A1B816C00920AF4 /* Supporting Files */,
+				E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */,
 			);
 			path = "Jeder Rappen Zaehlt";
 			sourceTree = "<group>";
@@ -199,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E21465FF1A1B816C00920AF4 /* Main.storyboard in Resources */,
-				E21466041A1B816C00920AF4 /* LaunchScreen.xib in Resources */,
+				E2FE38841A23AA2F00ABBCAC /* LaunchScreen.xib in Resources */,
 				E21466011A1B816C00920AF4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,9 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E21465F81A1B816C00920AF4 /* RootViewController.swift in Sources */,
-				E21465FC1A1B816C00920AF4 /* ModelController.swift in Sources */,
-				E21465FA1A1B816C00920AF4 /* DataViewController.swift in Sources */,
+				E2B0B1FC1A23995100E67CA7 /* SettingsController.swift in Sources */,
+				E2B0B1FE1A23996D00E67CA7 /* CreateUserController.swift in Sources */,
 				E21465F61A1B816C00920AF4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,14 +246,6 @@
 				E21465FE1A1B816C00920AF4 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E21466021A1B816C00920AF4 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E21466031A1B816C00920AF4 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -415,6 +403,7 @@
 				E21466151A1B816C00920AF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E21466161A1B816C00920AF4 /* Build configuration list for PBXNativeTarget "Jeder Rappen ZaehltTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +412,7 @@
 				E21466181A1B816C00920AF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
