@@ -45,7 +45,28 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     }
 //MARK: Page-Actions
     @IBAction func saveButtonPressed(sender: UIButton) {
-        //TODO: Save Data
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddhhmmss"
+
+        let filename = dateFormatter.stringFromDate(NSDate()) + ".csv"
+        let filepath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as String + "/" + filename
+        NSLog(filepath)
+
+        if (filepath != "") {
+            //Vorname;Geschlecht;Alter;Kanton
+            
+            let message = "\(firstname.text);\(String(sex.selectedSegmentIndex));\(Int(ageSlider.value));\(kanton.selectedRowInComponent(0))"
+           
+            message.writeToFile(filepath, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
+            
+            NSLog(message)
+        }
+        
+            
+        
+        
+        
     }
     @IBAction func clearButtonPressed(sender: UIButton) {
         let alertController = UIAlertController(title: "8-ung: Formular leeren", message: "Willst du das aktuelle Formular wirklich leeren? Nicht gespeicherte Daten gehen dabei verloren...", preferredStyle: .Alert)
@@ -63,7 +84,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         presentViewController(alertController, animated: true, completion: nil)
         
     }
-    
+
+
     
 //MARK: kantonPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
