@@ -10,19 +10,18 @@ import Foundation
 
 class DataTransmit {
     
-    var target : String
-    
+    var apiURL : String
+    var logger : Logger
     let queue = NSOperationQueue()
     let path : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as String
     
     let fileManager : NSFileManager = NSFileManager.defaultManager()
     
     
-    init() {
-        self.target = "http://api.jrz14.ch/registration_add.php"
-    }
-    init( target : String) {
-        self.target = target
+    init(logger : Logger) {
+        //ToDo: Use Self Created Config Class
+        self.apiURL = "http://api.jrz14.ch/registration_add.php"
+        self.logger = logger
     }
     
     /**
@@ -30,39 +29,65 @@ class DataTransmit {
     *
     */
     func startTransmit() {
-        
         NSLog(path)
         let enumerator : NSDirectoryEnumerator = self.fileManager.enumeratorAtPath(self.path)!
         while let element : String = enumerator.nextObject() as? String {
             if element.hasSuffix("csv") {
-                post(self.path + "/" + element)
+                post(self.path + "/" + element, time:element)
             }
         }
         
     }
     
-    func post(filePath : String)
+    func refreshLastSuccesfulTransmit()
     {
-        var request = NSMutableURLRequest(URL: NSURL(string: target)!)
+        let dateFormatter : NSDateFormatter = NSDateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy HH:mm")
+        
+        //Use Config / Defaults Class for locating the key
+        NSUserDefaults.standardUserDefaults().setObject(dateFormatter.stringFromDate(NSDate()), forKey: "lastUploadedDate")
+    }
+    
+    func postFinished(filePath : String, success:Bool, message:String)
+    {
+        if(success)
+        {
+            self.logger.log(filePath + " transmitted!")
+            let fileManager : NSFileManager = NSFileManager.defaultManager()
+            fileManager.removeItemAtPath(filePath, error: nil)
+            
+            refreshLastSuccesfulTransmit()
+            
+        } else {
+            logger.log(filePath + "failed! " + message)
+        }
+    }
+    
+    //Path to the CSV separated File which has to be submitted to the Server with the Timestamp when it has been created.
+    func post(filePath : String, time : String)
+    {
+        var request = NSMutableURLRequest(URL: NSURL(string: apiURL)!)
         var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         
         let text : String = String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: nil)!
         
         var paramsArray = text.componentsSeparatedByString(";")
+        
+        //Check if all required parameters are there. If not, just discard the message.
         if (paramsArray.count == 4)
         {
-            var params = ["vorname":paramsArray[0], "geschlecht":paramsArray[1], "alter":paramsArray[2], "kanton":paramsArray[3]] as Dictionary
-            
-            var err: NSError?
             
             //Build the HTTP Body with all the required Parameters
-            var http_body = ("vorname=" + paramsArray[0])
-            http_body = http_body + ("&geschlecht=" + paramsArray[1])
-            http_body = http_body + ("&alter=" + paramsArray[2])
-            http_body = http_body + ("&kanton=" + paramsArray[3])
+            var httpBody = ""
+            httpBody += ("vorname=" + paramsArray[0])
+            httpBody += ("&geschlecht=" + paramsArray[1])
+            httpBody += ("&alter=" + paramsArray[2])
+            httpBody += ("&kanton=" + paramsArray[3])
+            //ToDo: Supply Timestamp
+            //httpBody += ("&timestamp=" + paramsArray[3])
             
-            request.HTTPBody = http_body.dataUsingEncoding(NSUTF8StringEncoding)
+            request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
             
             //Content-Type Header
             request.addValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -71,49 +96,47 @@ class DataTransmit {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
+            
+            
+            
             //Create Asynchronious Task
             var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
                 
-                if(error == nil) {
-                    
+                var err: NSError?
+                var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+                
+                //JSONObjectWithData successful?
+                if(err != nil) {
+                    self.postFinished(filePath, success:false, message:err!.localizedDescription)
+                    return
                 }
                 
-                
-                NSLog("Response: \(response)")
-                
-                var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-                
-                NSLog("Body: \(strData)\n\n")
-                
-                //NSLog(error.description)
-                
-                /* var err: NSError?
-                
-                var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as NSDictionary
-                
-                // json = {"response":"Success","msg":"User login successfully."}
-                if((err) != nil) {
-                NSLog(err!.localizedDescription)
+                //json is optionally bounded. So, check for value:
+                if let parseJSON = json {
+                    
+                    //Is there a "response" in the JSON?
+                    if let response = parseJSON["response"] as? String {
+                        if (response != "Success")
+                        {
+                            self.postFinished(filePath, success: false, message: response)
+                            return
+                        }
+                        //Here everything went good.
+                        self.postFinished(filePath, success: true, message: "OK")
+                        return
+                    }
+                    else {
+                        self.postFinished(filePath, success: false, message: "Answering JSON doesn't have a response part.")
+                        return
+                    }
                 }
                 else {
-                var success = json["response"] as? String
-                NSLog("Succes: \(success)")
-                if json["response"] as NSString == "Success"
-                
-                {
-                NSLog("Login Successfull")
+                    //JSON is nil
+                    self.postFinished(filePath, success: false, message: "JSON war null")
+                    return
                 }
-                var responseMsg=json["msg"] as String
-                }*/
             })
             task.resume()
         }
     }
-    
-    func stopTransmit() {
-        
-    }
-    
-    
-    
 }

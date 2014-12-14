@@ -16,6 +16,7 @@
 		E2FE38841A23AA2F00ABBCAC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2FE38831A23AA2F00ABBCAC /* LaunchScreen.xib */; };
 		F40799791A39D4FB0003B78D /* DataTransmit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40799771A39D4FB0003B78D /* DataTransmit.swift */; };
 		F407997A1A39D4FB0003B78D /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40799781A39D4FB0003B78D /* StreamReader.swift */; };
+		F4CF332D1A3DB9B400B6C5EB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF332C1A3DB9B400B6C5EB /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E2FE38831A23AA2F00ABBCAC /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = ../LaunchScreen.xib; sourceTree = "<group>"; };
 		F40799771A39D4FB0003B78D /* DataTransmit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransmit.swift; sourceTree = "<group>"; };
 		F40799781A39D4FB0003B78D /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
+		F4CF332C1A3DB9B400B6C5EB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				E21465F31A1B816C00920AF4 /* Supporting Files */,
 				E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */,
 				E224AA151A39C71B00988508 /* LogController.swift */,
+				F4CF332C1A3DB9B400B6C5EB /* Logger.swift */,
 			);
 			path = "Jeder Rappen Zaehlt";
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				E2B0B1FC1A23995100E67CA7 /* SettingsController.swift in Sources */,
 				E224AA161A39C71B00988508 /* LogController.swift in Sources */,
 				E2B0B1FE1A23996D00E67CA7 /* CreateUserController.swift in Sources */,
+				F4CF332D1A3DB9B400B6C5EB /* Logger.swift in Sources */,
 				F40799791A39D4FB0003B78D /* DataTransmit.swift in Sources */,
 				E21465F61A1B816C00920AF4 /* AppDelegate.swift in Sources */,
 			);
