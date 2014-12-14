@@ -37,7 +37,6 @@ class Logger {
         
         if(!fileManager.fileExistsAtPath(logFilePath))
         {
-            
             objc_sync_enter(self)
             messageForFile.writeToFile(logFilePath, atomically:true, encoding:NSUTF8StringEncoding, error:nil);
             objc_sync_exit(self)
@@ -46,7 +45,9 @@ class Logger {
         {
             var fileHandle : NSFileHandle = NSFileHandle(forWritingAtPath:logFilePath)!
             fileHandle.seekToEndOfFile()
+            objc_sync_enter(self)
             fileHandle.writeData((messageForFile as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
+            objc_sync_exit(self)
         }
     }
 }

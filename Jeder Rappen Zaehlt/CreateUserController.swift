@@ -11,7 +11,7 @@ import UIKit
 
 
 class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
-  
+    
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var sex: UISegmentedControl!
     @IBOutlet weak var ageSlider: UISlider!
@@ -44,8 +44,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         "Vaud" :  "waadt",
         "Wallis" :  "wallis",
         "Zürich" :  "zurich"]
-
- 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -53,8 +53,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         kanton.delegate = self;
         setupForm()
     }
-
-//MARK: Form-Helpers
+    
+    //MARK: Form-Helpers
     func setupForm() {
         firstname.text.removeAll()
         sex.selectedSegmentIndex = 0;
@@ -64,16 +64,17 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         kanton.selectRow(0, inComponent: 0, animated: true)
     }
     
-//MARK: Page-Actions
+    //MARK: Page-Actions
     @IBAction func saveButtonPressed(sender: UIButton) {
         
         if(firstname.text != "") {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyyMMddhhmmss"
-
+            
             let filename = dateFormatter.stringFromDate(NSDate()) + ".csv"
+            
             let filepath : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as String + "/" + filename
-
+            
             if (filepath != "") {
                 // Save data to file in format: Vorname;Geschlecht;Alter;Kanton
                 let message = "\(firstname.text);\(String(sex.selectedSegmentIndex));\(Int(ageSlider.value));\(kanton.selectedRowInComponent(0))"
@@ -83,8 +84,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
                 let defaults = NSUserDefaults.standardUserDefaults()
                 let UserCreated_Counter : Int = defaults.integerForKey("UserCreatedCounter")
                 defaults.setInteger(UserCreated_Counter+1, forKey:"UserCreatedCounter")
-
-
+                
+                
                 NSLog("Visitor \(message) saved to file: \(filepath)")
                 
                 let alertController = UIAlertController(title: "Daten gespeichert!", message: "Der Besucher wurde erfolgreich gespeichert.", preferredStyle: .Alert)
@@ -113,13 +114,13 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         presentViewController(alertController, animated: true, completion: nil)
         
     }
-
+    
     @IBAction func ageSliderChanged(sender: UISlider) {
         ageLabel.text = "Alter: \(Int(sender.value))";
     }
-
     
-//MARK: kantonPickerView
+    
+    //MARK: kantonPickerView
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -134,12 +135,12 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         var key : String = Array(kantonData.keys).sorted(<)[row]  //Katonsname
         var value : String = Array(kantonData.values).sorted(<)[row] //Bild-Name
         var tmpView = UIView(frame: CGRectMake(0, 0, 300, 24))
-
+        
         var firstLabel  = UILabel(frame: CGRectMake(100, 0, 400, 24))
         firstLabel.text = key
         firstLabel.textColor = UIColor(red: 18/255.0, green: 106/255.0, blue: 149/255, alpha: 1.0)
         firstLabel.backgroundColor = UIColor.clearColor()
-    
+        
         var img = UIImage(named: value)
         var icon = UIImageView(image: img)
         icon.frame = CGRectMake(50, 0, 24, 24)
@@ -147,10 +148,10 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         tmpView.insertSubview(icon, atIndex: 0)
         tmpView.insertSubview(firstLabel, atIndex: 0)
         return tmpView
-
+        
     }
- 
-
-
+    
+    
+    
     
 }
