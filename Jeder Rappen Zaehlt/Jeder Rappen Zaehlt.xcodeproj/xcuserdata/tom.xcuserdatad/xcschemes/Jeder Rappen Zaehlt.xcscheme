@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E21465EF1A1B816C00920AF4"
-               BuildableName = "Jeder Rappen Zaehlt.app"
+               BuildableName = "JRZ 2014.app"
                BlueprintName = "Jeder Rappen Zaehlt"
                ReferencedContainer = "container:Jeder Rappen Zaehlt.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E21465EF1A1B816C00920AF4"
-            BuildableName = "Jeder Rappen Zaehlt.app"
+            BuildableName = "JRZ 2014.app"
             BlueprintName = "Jeder Rappen Zaehlt"
             ReferencedContainer = "container:Jeder Rappen Zaehlt.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E21465EF1A1B816C00920AF4"
-            BuildableName = "Jeder Rappen Zaehlt.app"
+            BuildableName = "JRZ 2014.app"
             BlueprintName = "Jeder Rappen Zaehlt"
             ReferencedContainer = "container:Jeder Rappen Zaehlt.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E21465EF1A1B816C00920AF4"
-            BuildableName = "Jeder Rappen Zaehlt.app"
+            BuildableName = "JRZ 2014.app"
             BlueprintName = "Jeder Rappen Zaehlt"
             ReferencedContainer = "container:Jeder Rappen Zaehlt.xcodeproj">
          </BuildableReference>

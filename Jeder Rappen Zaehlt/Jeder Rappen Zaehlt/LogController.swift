@@ -37,7 +37,7 @@ class LogController: UIViewController {
             //reading
             let log_messages = String(contentsOfFile: path, encoding:NSUTF8StringEncoding, error: &error)
             
-            if(log_messages != "") {
+            if(log_messages != nil) {
                 logMessageBox.text = log_messages
             }
             else {

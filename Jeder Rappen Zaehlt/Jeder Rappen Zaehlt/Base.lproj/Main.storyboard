@@ -99,7 +99,7 @@
         <!--Settings Controller-->
         <scene sceneID="Fvt-B9-Myg">
             <objects>
-                <viewController id="eYX-xn-LZU" customClass="SettingsController" customModule="Jeder_Rappen_Zaehlt" sceneMemberID="viewController">
+                <viewController id="eYX-xn-LZU" customClass="SettingsController" customModule="JRZ_2014" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ohK-H0-sOq"/>
                         <viewControllerLayoutGuide type="bottom" id="s4b-Me-vL2"/>
@@ -234,16 +234,13 @@
                                 <color key="textColor" red="0.070588235289999995" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="in_love-50" translatesAutoresizingMaskIntoConstraints="NO" id="mCH-kf-NNJ">
-                                <rect key="frame" x="504" y="416" width="16" height="16"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gog-J8-RFU">
                                 <rect key="frame" x="446" y="550" width="133" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.070588235289999995" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="JRZ: Jeder Rappen Zählt " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKQ-w5-2MR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKQ-w5-2MR">
                                 <rect key="frame" x="225" y="545" width="574" height="59"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.070588235289999995" green="0.41568627450000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -259,12 +256,9 @@
                                     <action selector="closeButtonPressed:" destination="eYX-xn-LZU" eventType="touchUpInside" id="HfP-XD-DuG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-Ty-Yht">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-Ty-Yht">
                                 <rect key="frame" x="571" y="203" width="12" height="15"/>
-                                <color key="tintColor" red="0.74509803919999995" green="0.054901960780000002" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="forward-50">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" image="forward-50"/>
                                 <connections>
                                     <segue destination="ynL-QQ-fUt" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="dmx-dV-MtG"/>
                                 </connections>
@@ -289,7 +283,7 @@
         <!--Log Controller-->
         <scene sceneID="MOx-J6-O0H">
             <objects>
-                <viewController id="ynL-QQ-fUt" customClass="LogController" customModule="Jeder_Rappen_Zaehlt" sceneMemberID="viewController">
+                <viewController id="ynL-QQ-fUt" customClass="LogController" customModule="JRZ_2014" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lDG-Zm-dHj"/>
                         <viewControllerLayoutGuide type="bottom" id="WTF-my-3vK"/>
@@ -340,7 +334,6 @@
     <resources>
         <image name="Image" width="1263" height="1024"/>
         <image name="forward-50" width="50" height="50"/>
-        <image name="in_love-50" width="50" height="50"/>
         <image name="save_as-50" width="50" height="50"/>
         <image name="waste-24" width="24" height="24"/>
     </resources>
