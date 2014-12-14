@@ -30,17 +30,23 @@ class Logger {
         
         NSLog(message)
         
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
+        
+        var messageForFile = "[" + dateFormatter.stringFromDate(NSDate()) + "]" + message + "\r\n"
+        
         if(!fileManager.fileExistsAtPath(logFilePath))
         {
+            
             objc_sync_enter(self)
-            message.writeToFile(logFilePath, atomically:true, encoding:NSUTF8StringEncoding, error:nil);
+            messageForFile.writeToFile(logFilePath, atomically:true, encoding:NSUTF8StringEncoding, error:nil);
             objc_sync_exit(self)
         }
         else
         {
             var fileHandle : NSFileHandle = NSFileHandle(forWritingAtPath:logFilePath)!
             fileHandle.seekToEndOfFile()
-            fileHandle.writeData((message as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
+            fileHandle.writeData((messageForFile as NSString).dataUsingEncoding(NSUTF8StringEncoding)!)
         }
     }
 }

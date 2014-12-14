@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Erni Simon & Enz Tom. All rights reserved.
 //
 
+//TODO: Sync Knopf
+
+
 import Foundation
 
 class DataTransmit {
@@ -16,11 +19,15 @@ class DataTransmit {
     let path : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as String
     
     let fileManager : NSFileManager = NSFileManager.defaultManager()
-    
+    let defaults : NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
     init(logger : Logger) {
-        //ToDo: Use Self Created Config Class
-        self.apiURL = "http://api.jrz14.ch/registration_add.php"
+        
+        if let url : String = defaults.objectForKey("serverAddress") as String?{
+            self.apiURL = url + "/registration_add.php"
+         } else {
+            self.apiURL = ""
+        }
         self.logger = logger
     }
     
@@ -41,25 +48,25 @@ class DataTransmit {
     
     func refreshLastSuccesfulTransmit()
     {
-        let dateFormatter : NSDateFormatter = NSDateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy HH:mm")
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         
-        //Use Config / Defaults Class for locating the key
-        NSUserDefaults.standardUserDefaults().setObject(dateFormatter.stringFromDate(NSDate()), forKey: "lastUploadedDate")
+        defaults.setObject(dateFormatter.stringFromDate(NSDate()), forKey: "lastUploadedDate")
+        
     }
     
     func postFinished(filePath : String, success:Bool, message:String)
     {
         if(success)
         {
-            self.logger.log(filePath + " transmitted!")
+            self.logger.log(filePath.lastPathComponent + " transmitted!")
             let fileManager : NSFileManager = NSFileManager.defaultManager()
             fileManager.removeItemAtPath(filePath, error: nil)
             
             refreshLastSuccesfulTransmit()
             
         } else {
-            logger.log(filePath + "failed! " + message)
+            logger.log(filePath.lastPathComponent + " failed! " + message)
         }
     }
     
