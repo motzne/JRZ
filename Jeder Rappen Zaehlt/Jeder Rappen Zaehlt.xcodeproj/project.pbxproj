@@ -10,7 +10,6 @@
 		E21465F61A1B816C00920AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21465F51A1B816C00920AF4 /* AppDelegate.swift */; };
 		E21465FF1A1B816C00920AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21465FD1A1B816C00920AF4 /* Main.storyboard */; };
 		E21466011A1B816C00920AF4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21466001A1B816C00920AF4 /* Images.xcassets */; };
-		E21466101A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E214660F1A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift */; };
 		E224AA161A39C71B00988508 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224AA151A39C71B00988508 /* LogController.swift */; };
 		E2B0B1FC1A23995100E67CA7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */; };
 		E2B0B1FE1A23996D00E67CA7 /* CreateUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B0B1FD1A23996D00E67CA7 /* CreateUserController.swift */; };
@@ -30,14 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E21465F01A1B816C00920AF4 /* Jeder Rappen Zaehlt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jeder Rappen Zaehlt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E21465F01A1B816C00920AF4 /* JRZ 2014.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JRZ 2014.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E21465F41A1B816C00920AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E21465F51A1B816C00920AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E21465FE1A1B816C00920AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E21466001A1B816C00920AF4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E21466091A1B816C00920AF4 /* Jeder Rappen ZaehltTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Jeder Rappen ZaehltTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E214660E1A1B816C00920AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E214660F1A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jeder_Rappen_ZaehltTests.swift; sourceTree = "<group>"; };
 		E224AA151A39C71B00988508 /* LogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 		E2B0B1FB1A23995100E67CA7 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		E2B0B1FD1A23996D00E67CA7 /* CreateUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUserController.swift; path = ../CreateUserController.swift; sourceTree = "<group>"; };
@@ -76,7 +74,7 @@
 		E21465F11A1B816C00920AF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E21465F01A1B816C00920AF4 /* Jeder Rappen Zaehlt.app */,
+				E21465F01A1B816C00920AF4 /* JRZ 2014.app */,
 				E21466091A1B816C00920AF4 /* Jeder Rappen ZaehltTests.xctest */,
 			);
 			name = Products;
@@ -110,7 +108,6 @@
 		E214660C1A1B816C00920AF4 /* Jeder Rappen ZaehltTests */ = {
 			isa = PBXGroup;
 			children = (
-				E214660F1A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift */,
 				E214660D1A1B816C00920AF4 /* Supporting Files */,
 			);
 			path = "Jeder Rappen ZaehltTests";
@@ -141,7 +138,7 @@
 			);
 			name = "Jeder Rappen Zaehlt";
 			productName = "Jeder Rappen Zaehlt";
-			productReference = E21465F01A1B816C00920AF4 /* Jeder Rappen Zaehlt.app */;
+			productReference = E21465F01A1B816C00920AF4 /* JRZ 2014.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E21466081A1B816C00920AF4 /* Jeder Rappen ZaehltTests */ = {
@@ -173,6 +170,7 @@
 				TargetAttributes = {
 					E21465EF1A1B816C00920AF4 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = KJPG27AF2M;
 					};
 					E21466081A1B816C00920AF4 = {
 						CreatedOnToolsVersion = 6.1;
@@ -237,7 +235,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E21466101A1B816C00920AF4 /* Jeder_Rappen_ZaehltTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +343,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Jeder Rappen Zaehlt/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "JRZ 2014";
 			};
 			name = Debug;
 		};
@@ -356,9 +354,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Jeder Rappen Zaehlt/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "JRZ 2014";
 			};
 			name = Release;
 		};
