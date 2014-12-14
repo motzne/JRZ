@@ -13,6 +13,22 @@ import Foundation
 
 class DataTransmit {
     
+    
+    //computed property for singleton
+    class var sharedInstance: DataTransmit {
+        struct Static {
+            static var instance: DataTransmit?
+            static var token: dispatch_once_t = 0
+        }
+        
+        dispatch_once(&Static.token) {
+            Static.instance = DataTransmit(logger: Logger())
+        }
+        
+        return Static.instance!
+    }
+    
+    
     var apiURL : String
     var logger : Logger
     let queue = NSOperationQueue()
@@ -25,7 +41,7 @@ class DataTransmit {
         
         if let url : String = defaults.objectForKey("serverAddress") as String?{
             self.apiURL = url + "/registration_add.php"
-         } else {
+        } else {
             self.apiURL = ""
         }
         self.logger = logger
@@ -36,14 +52,15 @@ class DataTransmit {
     *
     */
     func startTransmit() {
-        NSLog(path)
-        let enumerator : NSDirectoryEnumerator = self.fileManager.enumeratorAtPath(self.path)!
-        while let element : String = enumerator.nextObject() as? String {
-            if element.hasSuffix("csv") {
-                post(self.path + "/" + element, time:element)
+        let queue = NSOperationQueue()
+        queue.addOperationWithBlock() {
+            let enumerator : NSDirectoryEnumerator = self.fileManager.enumeratorAtPath(self.path)!
+            while let element : String = enumerator.nextObject() as? String {
+                if element.hasSuffix("csv") {
+                    self.post(self.path + "/" + element, time:element)
+                }
             }
         }
-        
     }
     
     func refreshLastSuccesfulTransmit()
@@ -102,8 +119,6 @@ class DataTransmit {
             //Answer Content-Type
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            
             
             
             //Create Asynchronious Task

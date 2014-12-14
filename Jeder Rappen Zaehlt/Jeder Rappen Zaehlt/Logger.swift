@@ -33,7 +33,7 @@ class Logger {
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy - HH:mm"
         
-        var messageForFile = "[" + dateFormatter.stringFromDate(NSDate()) + "]" + message + "\r\n"
+        var messageForFile = "[" + dateFormatter.stringFromDate(NSDate()) + "] " + message + "\r\n"
         
         if(!fileManager.fileExistsAtPath(logFilePath))
         {

@@ -12,7 +12,7 @@ import UIKit
 class SettingsController: UIViewController {
     @IBOutlet weak var serverAddress: UITextField!
     @IBOutlet weak var serverToken: UITextField!
-    @IBOutlet weak var serverPort: UITextField!
+    //@IBOutlet weak var serverPort: UITextField!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var lastUploadDate: UILabel!
     @IBOutlet weak var countUserCreated: UILabel!
@@ -25,7 +25,7 @@ class SettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         serverAddress.text =  defaults.objectForKey("serverAddress") as? String
-        serverPort.text =  defaults.objectForKey("serverPort") as? String
+        //serverPort.text =  defaults.objectForKey("serverPort") as? String
         serverToken.text =  defaults.objectForKey("serverToken") as? String
         countUserCreated.text =  String(defaults.integerForKey("UserCreatedCounter"))
         countQueueEntries.text =  String(countQueuedFiles())
@@ -60,9 +60,13 @@ class SettingsController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+    @IBAction func syncNowButtonPressed(sender: AnyObject) {
+        DataTransmit.sharedInstance.startTransmit()
+    }
+    
     func saveServerSettings(){
         defaults.setObject(serverAddress.text, forKey:"serverAddress")
-        defaults.setObject(serverPort.text, forKey:"serverPort")
+        //defaults.setObject(serverPort.text, forKey:"serverPort")
         defaults.setObject(serverToken.text, forKey:"serverToken")
         defaults.synchronize()
     }

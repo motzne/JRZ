@@ -18,6 +18,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var kanton: UIPickerView!
     
+    let dataTransmitter : DataTransmit = DataTransmit.sharedInstance
+    
     var kantonData : Dictionary<String, String> = ["Luzern" :  "luzern",
         "Zug" :  "zug",
         "Nidwalden" :  "nidwalden",
@@ -92,6 +94,9 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
                 let okayAction = UIAlertAction(title: "OK", style: .Default) { (action) in
                     self.setupForm()
                 }
+                
+                dataTransmitter.startTransmit()
+                
                 alertController.addAction(okayAction)
                 presentViewController(alertController, animated: true, completion: nil)
                 
