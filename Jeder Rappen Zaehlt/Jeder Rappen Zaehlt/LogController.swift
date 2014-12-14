@@ -13,19 +13,13 @@ class LogController: UIViewController {
 
     
     @IBOutlet weak var logMessageBox: UITextView!
-    @IBAction func closeButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
-    }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         let error_log = "error.log"
-        
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
-        
         if (dirs != nil) {
             let directories:[String] = dirs!
             let dirs = directories[0];
@@ -33,10 +27,7 @@ class LogController: UIViewController {
             
             //reading
             var error:NSError?
-            
-            //reading
             let log_messages = String(contentsOfFile: path, encoding:NSUTF8StringEncoding, error: &error)
-            
             if(log_messages != nil) {
                 logMessageBox.text = log_messages
             }
@@ -45,6 +36,11 @@ class LogController: UIViewController {
             }
 
         }
+    }
+
+//MARK: Form-Helpers
+    @IBAction func closeButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
 
 }

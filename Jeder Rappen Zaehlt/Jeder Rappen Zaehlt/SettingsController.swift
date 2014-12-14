@@ -17,40 +17,28 @@ class SettingsController: UIViewController {
     @IBOutlet weak var lastUploadDate: UILabel!
     @IBOutlet weak var countUserCreated: UILabel!
     @IBOutlet weak var countQueueEntries: UILabel!
-    @IBAction func statisticButtonPressed(sender: AnyObject) {
-    }
-    @IBAction func showLogButtonPressed(sender: AnyObject) {
-    }
-    @IBAction func closeButtonPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: {})
 
-    }
     let defaults = NSUserDefaults.standardUserDefaults()
+    let version : AnyObject! = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let version : AnyObject! = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")
-    
         serverAddress.text =  defaults.objectForKey("serverAddress") as? String
         serverPort.text =  defaults.objectForKey("serverPort") as? String
         serverToken.text =  defaults.objectForKey("serverToken") as? String
         countUserCreated.text =  String(defaults.integerForKey("UserCreatedCounter"))
         countQueueEntries.text =  String(countQueuedFiles())
         lastUploadDate.text =  defaults.objectForKey("lastUploadedDate") as? String
-
-
-        
-
         versionLabel.text = version.description
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidDisappear(animated: Bool) {
         saveServerSettings()
-
     }
-    
+
+//MARK: Form-Helpers
     func countQueuedFiles() -> Int{
        
         let path : String = NSSearchPathForDirectoriesInDomains(.CachesDirectory , .UserDomainMask, true)[0] as String
@@ -68,7 +56,9 @@ class SettingsController: UIViewController {
         return counter
     }
     
-    
+    @IBAction func closeButtonPressed(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
     
     func saveServerSettings(){
         defaults.setObject(serverAddress.text, forKey:"serverAddress")
@@ -76,7 +66,5 @@ class SettingsController: UIViewController {
         defaults.setObject(serverToken.text, forKey:"serverToken")
         defaults.synchronize()
     }
-   
-    
     
 }

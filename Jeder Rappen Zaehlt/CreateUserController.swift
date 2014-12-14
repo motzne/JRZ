@@ -17,10 +17,7 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var ageSlider: UISlider!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var kanton: UIPickerView!
-    @IBAction func ageSliderChanged(sender: UISlider) {
-        ageLabel.text = "Alter: \(Int(sender.value))";
-    }
- //   let kantonData = ["Luzern","Zug","Nidwalden","Obwalden","Uri"]
+    
     var kantonData : Dictionary<String, String> = ["Luzern" :  "luzern",
         "Zug" :  "zug",
         "Nidwalden" :  "nidwalden",
@@ -57,9 +54,8 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         setupForm()
     }
 
-    
+//MARK: Form-Helpers
     func setupForm() {
-        //TODO: Formular löschen
         firstname.text.removeAll()
         sex.selectedSegmentIndex = 0;
         ageSlider.value = 42;
@@ -101,10 +97,6 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
                 
             }
         }
-        
-        
-        
-        
     }
     
     @IBAction func clearButtonPressed(sender: UIButton) {
@@ -122,6 +114,9 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         
     }
 
+    @IBAction func ageSliderChanged(sender: UISlider) {
+        ageLabel.text = "Alter: \(Int(sender.value))";
+    }
 
     
 //MARK: kantonPickerView
@@ -130,6 +125,9 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return kantonData.count
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return Array(kantonData.keys)[row]
     }
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         
