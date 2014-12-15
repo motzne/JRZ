@@ -40,7 +40,7 @@ class DataTransmit {
     init(logger : Logger) {
         
         if let url : String = defaults.objectForKey("serverAddress") as String?{
-            self.apiURL = url + "/registration_add.php"
+            self.apiURL =  "http://" + url + "/registration_add.php"
         } else {
             self.apiURL = ""
         }
