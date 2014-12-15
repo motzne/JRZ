@@ -17,7 +17,6 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var ageSlider: UISlider!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var kanton: UIPickerView!
-    
     let dataTransmitter : DataTransmit = DataTransmit.sharedInstance
     
     var kantonData : Dictionary<String, String> = ["Luzern" :  "luzern",
@@ -26,12 +25,12 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         "Obwalden" :  "obwalden",
         "Uri" :  "uri",
         "Aargau" :  "aargau",
-        "Appenzell-Innerrhoden" :  "appenzel-inner",
-        "Appenzell-Ausserrhoden" :  "appenzell-ausser",
-        "Basel-Land" :  "basel-land",
+        "Appenzell I. Rh." :  "appenzel-inner",
+        "Appenzell A. Rh." :  "appenzell-ausser",
+        "Basel-Landschaft" :  "basel-land",
         "Basel-Stadt" :  "basel-stadt",
         "Bern" :  "bern",
-        "Fribourg" :  "freiburg",
+        "Freiburg" :  "freiburg",
         "Genf" :  "genf",
         "Glarus" :  "glarus",
         "Graubünden" :  "graubuenden",
@@ -43,7 +42,7 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         "St. Gallen" :  "stgallen",
         "Tessin" :  "tessin",
         "Thurgau" :  "thurgau",
-        "Vaud" :  "waadt",
+        "Waadt" :  "waadt",
         "Wallis" :  "wallis",
         "Zürich" :  "zurich"]
     
@@ -94,7 +93,7 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
             
             if (filepath != "") {
                 // Save data to file in format: Vorname;Geschlecht;Alter;Kanton
-                let message = "\(firstname.text);\(String(sex.selectedSegmentIndex));\(Int(ageSlider.value));\(kanton.selectedRowInComponent(0))"
+                let message = "\(firstname.text);\(String(sex.selectedSegmentIndex));\(Int(ageSlider.value));\(Array(kantonData.keys).sorted(<)[kanton.selectedRowInComponent(0))"
                 message.writeToFile(filepath, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
                 
                 // Add +1 to UserCreated_Counter
@@ -146,9 +145,6 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return kantonData.count
-    }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return Array(kantonData.keys)[row]
     }
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         
