@@ -24,14 +24,17 @@ class SettingsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshLabels()
+        
+    }
+    
+    func refreshLabels() {
         serverAddress.text =  defaults.objectForKey("serverAddress") as? String
-        //serverPort.text =  defaults.objectForKey("serverPort") as? String
         serverToken.text =  defaults.objectForKey("serverToken") as? String
         countUserCreated.text =  String(defaults.integerForKey("UserCreatedCounter"))
         countQueueEntries.text =  String(countQueuedFiles())
         lastUploadDate.text =  defaults.objectForKey("lastUploadedDate") as? String
         versionLabel.text = version.description
-
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -69,6 +72,7 @@ class SettingsController: UIViewController {
     
     @IBAction func syncNowButtonPressed(sender: AnyObject) {
         DataTransmit.sharedInstance.startTransmit()
+        refreshLabels()
     }
     
     func saveServerSettings(){
