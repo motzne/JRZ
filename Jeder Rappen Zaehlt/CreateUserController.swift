@@ -17,7 +17,10 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     @IBOutlet weak var ageSlider: UISlider!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var kanton: UIPickerView!
+    
     let dataTransmitter : DataTransmit = DataTransmit.sharedInstance
+    
+    var kantonsArray : NSMutableArray = NSMutableArray()
     
     var kantonData : Dictionary<String, String> = ["Luzern" :  "luzern",
         "Zug" :  "zug",
@@ -46,6 +49,7 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         "Wallis" :  "wallis",
         "Zürich" :  "zurich"]
     
+    var topKantone : NSMutableArray = ["Luzern", "Schwyz", "Zug", "Obwalden"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +57,14 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         kanton.dataSource = self;
         kanton.delegate = self;
         setupForm()
+        
+    }
+    
+    func initKantonsArray() {
+        
+        kantonsArray.addObjectsFromArray(topKantone)
+        kantonsArray.addObject("____________")
+        kantonsArray.addObjectsFromArray(kantonData.keys.array.sorted(<))
         
     }
     
@@ -93,7 +105,12 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
             
             if (filepath != "") {
                 // Save data to file in format: Vorname;Geschlecht;Alter;Kanton
-                let message = "\(firstname.text);\(String(sex.selectedSegmentIndex));\(Int(ageSlider.value));\(Array(kantonData.keys).sorted(<)[kanton.selectedRowInComponent(0))"
+                var message : String = ""
+                message += firstname.text + ";"
+                message += String(sex.selectedSegmentIndex) + ";"
+                message += String(Int(ageSlider.value)) + ";"
+                message += String(kantonsArray[kanton.selectedRowInComponent(0)] as NSString)
+
                 message.writeToFile(filepath, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
                 
                 // Add +1 to UserCreated_Counter
@@ -144,25 +161,42 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return kantonData.count
+        if (kantonsArray.count == 0)
+        {
+            initKantonsArray()
+        }
+        return kantonsArray.count
     }
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView {
         
-        var key : String = Array(kantonData.keys).sorted(<)[row]  //Katonsname
-        var value : String = Array(kantonData.values).sorted(<)[row] //Bild-Name
+        if (kantonsArray.count == 0)
+        {
+            initKantonsArray()
+        }
+        
+        var kantonsName : String = kantonsArray[row] as String
+        
+        
+        
+        
+        
         var tmpView = UIView(frame: CGRectMake(0, 0, 300, 24))
         
         var firstLabel  = UILabel(frame: CGRectMake(100, 0, 400, 24))
-        firstLabel.text = key
+        firstLabel.text = kantonsName
         firstLabel.textColor = UIColor(red: 18/255.0, green: 106/255.0, blue: 149/255, alpha: 1.0)
         firstLabel.backgroundColor = UIColor.clearColor()
         
-        var img = UIImage(named: value)
-        var icon = UIImageView(image: img)
-        icon.frame = CGRectMake(50, 0, 24, 24)
-        
-        tmpView.insertSubview(icon, atIndex: 0)
-        tmpView.insertSubview(firstLabel, atIndex: 0)
+        if (kantonsName != "____________") {
+            var bildName : String = kantonData[kantonsName]!
+            var img = UIImage(named: bildName)
+            var icon = UIImageView(image: img)
+            icon.frame = CGRectMake(50, 0, 24, 24)
+            
+            tmpView.insertSubview(icon, atIndex: 0)
+            tmpView.insertSubview(firstLabel, atIndex: 0)
+            
+        }
         return tmpView
         
     }
