@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var sex: UISegmentedControl!
@@ -54,11 +54,14 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         kanton.dataSource = self;
         kanton.delegate = self;
         setupForm()
+        
     }
     
     //MARK: Form-Helpers
     func setupForm() {
         firstname.text.removeAll()
+        firstname.returnKeyType = .Done
+        firstname.delegate = self
         sex.selectedSegmentIndex = 0;
         ageSlider.value = 42;
         ageLabel.text = "Alter: 42"
@@ -69,6 +72,12 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     
