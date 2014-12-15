@@ -66,6 +66,12 @@ class CreateUserController: UIViewController,UIPickerViewDataSource,UIPickerView
         kanton.selectRow(0, inComponent: 0, animated: true)
     }
     
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    
     //MARK: Page-Actions
     @IBAction func saveButtonPressed(sender: UIButton) {
         
