@@ -115,6 +115,9 @@
                                 <rect key="frame" x="377" y="346" width="270" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="servertokenFinishedEditing:" destination="eYX-xn-LZU" eventType="editingDidEnd" id="s42-wl-TrE"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Einstellungen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV3-Th-e3L">
                                 <rect key="frame" x="366" y="51" width="293" height="29"/>
@@ -198,6 +201,9 @@
                                 <rect key="frame" x="377" y="291" width="270" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="serveradressFinishedEditing:" destination="eYX-xn-LZU" eventType="editingDidEnd" id="NIY-VW-8Y0"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adresse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klT-JM-s0Z">
                                 <rect key="frame" x="446" y="273" width="133" height="21"/>

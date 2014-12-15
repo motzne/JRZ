@@ -56,6 +56,13 @@ class SettingsController: UIViewController {
         return counter
     }
     
+    @IBAction func serveradressFinishedEditing(sender: AnyObject) {
+        saveServerSettings()
+    }
+    @IBAction func servertokenFinishedEditing(sender: AnyObject) {
+        saveServerSettings()
+    }
+    
     @IBAction func closeButtonPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
